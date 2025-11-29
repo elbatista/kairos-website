@@ -1,0 +1,101 @@
+
+Modern enterprises face a pressing challenge: integrating domain-specific, structured knowledge into AI systems that can reason, plan, and make decisions. While large language models (LLMs) provide general-purpose intelligence, they lack access to contextual, evolving data that organizations rely on for accurate insights. Knowledge Graphs (KGs) address part of this gap by representing entities and relationships in a semantically rich structure, enabling inference and contextual reasoning. However, as Agentic AI (autonomous agents capable of iterative reasoning) gains traction, new data access requirements emerge: these systems demand incremental access, continuous updates, and dynamic reasoning over distributed, evolving data sources.
+
+Despite advances in KG technologies, large-scale deployment remains limited by challenges in scalability, availability, and consistency. Traditional graph databases perform well for static workloads but struggle when the data is constantly changing, or being accessed in real time. 
+Retrieval-Augmented Generation (RAG) architectures leveraging graph databases (e.g., GraphRAG) promise contextually grounded retrieval for LLM reasoning. In theory, it should enhance AI reliability by relying on dynamic, up-to-date knowledge. In practice, however, since enterprise data usually changes only incrementally, such systems end up re-executing complete graph queries from scratch, leading to unnecessary computational overhead.
+
+KAIROS (Knowledge Architecture for Incremental Reasoning Over Data Sources), a novel distributed platform for real-time reasoning over graph-based knowledge. Instead of recomputing full traversals, KAIROS detect and process only the changes in the underlying graph. It reuse intermediate states and employ a caching-like mechanism to accelerate iterative or structurally similar queries commonly issued by LLMs during multi-step reasoning.
+KAIROS introduces a distributed architecture that supports: (i) scalable and fault-tolerant graph storage through replicated partitions with strong consistency guarantees; (ii) incremental and real-time query processing for adaptive reasoning; and (iii) cloud-neutral
+Cloud-neutral: capable  of running on any cloud provider, without dependence on a specific vendor.
+or on-premises deployments.
+Built on open-source foundations and our prior research, the system support future data-ingestion connectors (e.g., Kafka, SQL). 
+
+KAIROS developed and validated through systematic benchmarking, focusing on performance under dynamic workloads, fault tolerance, and scalability. Its long-term goal is to enable enterprises to deploy AI agents that reason over evolving data in real time, supporting diverse data-driven applications and delivering significant economic value.
+
+
+Research background:
+The KAIROS project builds on years of research in distributed systems, real-time data processing, and scalable architectures, combining expertise in fault-tolerant computing and efficient state management. It lies at the intersection of artificial intelligence, knowledge graphs, and distributed, highly scalable, and available storage systems.
+
+Large Language Models and Agentic AI
+Large language models (LLMs) are neural networks trained on extensive text datasets to learn and reproduce linguistic patterns, semantic relationships, and contextual knowledge. They excel at generating coherent text, summarizing information, answering questions, and even performing reasoning tasks that require synthesizing knowledge from multiple sources \cite{Mai,openai2024gpt4technicalreport}.
+While LLMs are powerful in understanding and generating language, they are inherently limited by the data on which they were trained and may produce outdated or inconsistent outputs. Integrating LLMs with knowledge graphs addresses these limitations by providing structured, up-to-date, and interconnected context. For example, a finance-focused LLM can leverage a KG containing live market data, corporate relationships, and regulatory constraints to provide accurate investment insights or risk assessments \cite{Hu}.
+
+Agentic AI refers to systems that act autonomously, pursue complex goals, and perform incremental reasoning by chaining actions across multiple data sources, tools, or knowledge representations \cite{ReAct}. Unlike traditional AI, these systems require interfaces for incremental queries, dynamic graph updates, and iterative decision-making, which conventional knowledge graph platforms are not optimized for. Examples include AI agents that plan multi-step workflows in enterprise data environments, continually updating their internal state as new evidence arrives.
+
+Knowledge Graphs
+Knowledge Graphs (KGs) are structured representations of entities, concepts, and the relationships among them within a particular domain. 
+Unlike traditional databases, which store data in rigid tables, KGs encode semantics and context, allowing systems to ``understand'' connections between pieces of information. 
+This enables advanced reasoning, complex queries, and seamless data integration across heterogeneous sources, which is particularly valuable in AI applications where context and correlation matter \cite{Paulheim, hogan2021knowledge}.
+For instance, in healthcare, a KG can link patient records, medical literature, drug interactions, and clinical trial data, enabling AI systems to recommend personalized treatment plans or identify potential adverse reactions that are not immediately obvious from raw data. In enterprise settings, KGs can unify customer data (CRM), supply chain, and operational data to support real-time decision-making and predictive maintenance \cite{Zaveri}.
+
+Moreover, modern AI agents rely heavily on KGs for incremental reasoning and multi-hop inference. When an AI system needs to answer a complex question or plan actions, the KG provides a structured context for tracing connections between entities and updating knowledge dynamically \cite{Nickel_2016}. This makes KGs indispensable for Agentic AI workflows, where reasoning is continuous, context-sensitive, and often distributed across multiple agents or systems.
+Recent approaches such as GraphRAG~\cite{edge2024_from_local_to_global, graphrag_neo4j} attempt to combine KGs with Retrieval-Augmented Generation (RAG) to improve LLM reasoning by enabling  context-aware retrieval. In theory, GraphRAG leverages the KG structure to ground LLM outputs in verified knowledge. However, in practice, these pipelines repeatedly execute graph queries from scratch, even when datasets evolve incrementally. This results in significant computational overhead and limits scalability, particularly for large, partitioned, or distributed enterprise datasets.
+
+
+ighly scalable and available storage systems.
+Highly scalable and available storage systems are designed to manage data across multiple nodes while ensuring fault tolerance and continuous availability. To achieve this, many systems rely on State Machine Replication (SMR) \cite{lamport98, schneider90}, where updates are propagated across multiple nodes to maintain consistency and resilience against failures. For knowledge graph storage, this is particularly challenging because graph updates are often interdependent and queries may span multiple partitions. Efficient mechanisms are needed to maintain consistency and support real-time, incremental access, which is critical for agentic AI systems that rely on continuously evolving knowledge.
+
+
+previous research has focused on the design, implementation, and performance evaluation of middleware for dependable and scalable distributed systems, directly aligning with the goals of this project.
+In particular, studies such as \cite{BATISTA2023, BATISTA2022, CATTANEO2025}, provide the theoretical and experimental groundwork for KAIROS. 
+\emph{FlexCast}~\cite{BATISTA2023} introduced a genuine overlay-based atomic multicast protocol that efficiently combines locality and ordering guarantees in partitioned replicated systems (e.g., sharded data stores), demonstrating how to achieve low latency communication without compromising strong consistency. 
+The study in~\cite{BATISTA2022} explored parallel execution strategies to improve resource utilization and execution performance through refined synchronization mechanisms. 
+Finally, the \emph{B+AVL Trees}~\cite{CATTANEO2025} study contributed a novel data structure for robust and efficient state management and synchronization, enabling fast and verifiable data transfer in replicated environments. 
+Together, these works form a coherent body of expertise in dependable middleware, data partitioning and replication, and performance evaluation, which will serve as the foundation for implementing and experimentally assessing KAIROS's distributed architecture and its incremental query mechanisms under real-world conditions.
+
+\begin{table}[h]
+    \begin{center}
+    \begin{minipage}{\textwidth}
+    \begin{center}
+    \caption{Main research contributions and performance highlights relevant to KAIROS}
+    \label{tab:research_contributions}
+    \begin{tabular}{p{2.5cm} p{3cm} p{9cm}}
+    \\ \toprule
+    \bf Publication & \bf Context & \bf Main results and relevance \\ \midrule
+    
+    \emph{FlexCast}\cite{BATISTA2023} &
+    Atomic multicast and replication &
+    Proposed a genuine overlay-based multicast protocol achieving up to \textbf{40\% lower latency} and \textbf{30\% higher throughput} than existing protocols in geo-distributed settings. Guides the development of KAIROS’s fault-tolerant communication layer. 
+    \\ \hline
+    
+    \emph{Parallel SMR execution}\cite{BATISTA2022} &
+    Parallel state machine replication &
+    Introduced generalized early-scheduling algorithms~\cite{EarlyScheduling} with work-stealing~\cite{workstealing} techniques and low-overhead synchronization, yielding up to \textbf{2.5$\times$ execution performance improvement} under high contention. Guides KAIROS’s parallel query execution and scheduling model.
+     \\ \hline
+    
+    \emph{B+AVL Trees}\cite{CATTANEO2025} &
+    State transfer and synchronization &
+    Designed a hybrid tree structure combining AVL balancing and Merkle hashing, reducing validation overhead by \textbf{up to 35\%} and state transfer time by \textbf{50\%}. Guides the development of KAIROS’s incremental and consistent state management. 
+    \\ \bottomrule
+    
+    \end{tabular}
+    \end{center}
+    \end{minipage}
+    \end{center}
+    \vspace{-1em}
+\end{table}
+
+
+Innovative aspects:
+AI systems have undergone a paradigm shift from retrospective analytics toward real-time, autonomous reasoning and decision-making.
+Knowledge Graphs (KGs) have provided the structural backbone for this evolution, enabling AI agents to reason over interconnected entities, integrate heterogeneous data sources, and make informed, context-aware decisions. 
+However, current KG technologies remain limited in their ability to support \emph{incremental queries}, \emph{dynamic updates}, and \emph{tight integration} with emerging \emph{agentic AI} models.
+
+KAIROS introduces a groundbreaking architectural approach to overcoming these limitations by developing a lightweight, distributed intermediary layer that connects AI agents with evolving graph data in real time. 
+Unlike existing graph databases or static reasoning systems, our approach enables incremental, delta-based computation, caching and reuse of intermediate states, capabilities essential for multi-step agentic reasoning. 
+This architecture bridges the gap between structured knowledge management and autonomous AI behavior, unlocking new capabilities for real-time, data-driven applications.
+
+Therefore, the key novelties of this project are as follows.
+First, it introduces an \emph{incremental graph reasoning paradigm} that reuses computation and processes only the changes in evolving knowledge sources, addressing a fundamental limitation of current KG-based systems. 
+Second, it provides a \emph{distributed, strongly consistent, and cloud-neutral architecture} designed specifically for agentic AI workloads, enabling real-time access to reliable knowledge across heterogeneous environments.
+Third, it pioneers a \emph{new middleware layer} in the AI ecosystem that integrates structured enterprise knowledge with autonomous reasoning, filling a critical gap not addressed by existing KG or RAG solutions.
+
+Together, these innovations for a unique selling proposition and enable a new generation of adaptive, dependable, and performance-aware AI systems capable of reasoning over evolving knowledge at scale.
+In essence, kairos establishes a dynamic interface between knowledge graphs and agentic AI, transforming how autonomous systems reason over continuously changing information. 
+
+
+Commitment to a sustainable development:
+KAIROS is closely aligned with the United Nations’ Sustainable Development Goals, particularly  Goal~8 (\emph{Decent Work and Economic Growth}) and Goal~9 (\emph{Industry, Innovation, and Infrastructure}). 
+KAIROS supports Goal~8 by enhancing productivity and operational efficiency in SMEs and larger organizations, fostering sustainable economic growth, and creating opportunities for high-tech employment in AI and data-driven industries. 
+It also contributes to Goal~9 by providing a scalable, fault-tolerant, and cloud-neutral platform that enables enterprises to integrate evolving knowledge graphs with agentic AI systems, supporting real-time decision-making and innovation. 
+By facilitating adaptive, data-driven digital infrastructures, KAIROS strengthens both industrial innovation and economic development across diverse sectors.
