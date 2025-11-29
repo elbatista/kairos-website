@@ -58,7 +58,7 @@ export default function UseCasesPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1, duration: 0.5 }}
-            className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition cursor-pointer"
+            className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition "
           >
             <div className="text-gray-900 mb-4">{item.icon}</div>
             <h3 className="text-xl font-semibold mb-2">{item.title}</h3>

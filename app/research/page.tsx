@@ -77,7 +77,7 @@ export default function ResearchPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition cursor-pointer"
+              className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition "
             >
               <div className="text-gray-900 mb-4">
                 <BookOpen size={40} />
