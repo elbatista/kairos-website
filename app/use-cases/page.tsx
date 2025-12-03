@@ -1,10 +1,17 @@
 "use client";
 
-import { TrendingUp, HeartPulse, Route, Building2 } from "lucide-react";
+import { TrendingUp, HeartPulse, Route, Building2, Network } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function UseCasesPage() {
   const cases = [
+    {
+      title: "Telecom Providers",
+      icon: <Network size={40} />,
+      desc: "Reason over graph-based network topology representing devices, services, users, and infrastructure to optimize performance, detect failures, and enhance service delivery.",
+      link: "/use-cases/telecom",
+    },
+
     {
       title: "Finance",
       icon: <TrendingUp size={40} />,

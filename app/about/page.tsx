@@ -119,7 +119,7 @@ export default function AboutPage() {
                   href={member.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-600 underline sm:no-underline hover:underline"
                 >
                   {member.name}
                 </a>
