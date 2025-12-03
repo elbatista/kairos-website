@@ -2,6 +2,7 @@
 
 import { Telescope, Swords, Globe } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function AboutPage() {
   const highlights = [
@@ -27,13 +28,17 @@ export default function AboutPage() {
       name: "Eliã Batista",
       role: "Co-Founder & Chief Scientist",
       bio: "PhD candidate at USI and PUC-RS specializing in distributed systems, parallel state machine replication, and knowledge-driven AI. Passionate about scalable, dependable AI solutions.",
-      link: "https://elbatista.github.io/"
+      link: "https://elbatista.github.io/",
+      photo: "/team/elia.jpg",
+
     },
     {
       name: "Fernando Pedone",
       role: "Co-Founder & Research Supervisor",
       bio: "Full Professor at USI with expertise in dependable distributed systems, replication protocols, and fault-tolerant architectures. Advisor to the KAIROS research team.",
-      link: "https://www.inf.usi.ch/faculty/pedone/"
+      link: "https://www.inf.usi.ch/faculty/pedone/",
+      photo: "/team/pedone.jpg",
+
     },
   ];
 
@@ -86,24 +91,46 @@ export default function AboutPage() {
 
       {/* Optional Team Section */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-      >
-        <h2 className="text-2xl font-semibold text-gray-900 mb-6">Our Team</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {team.map((member, idx) => (
-            <div
-              key={idx}
-              className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition"
-            >
-              <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.5 }}
+    >
+      <h2 className="text-2xl font-semibold text-gray-900 mb-6">Our Team</h2>
+      <div className="grid md:grid-cols-2 gap-8">
+      {team.map((member, idx) => (
+          <div
+            key={idx}
+            className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition flex items-center gap-4"
+          >
+            {/* Photo on the left */}
+            <div className="w-24 h-24 relative rounded-full overflow-hidden flex-shrink-0">
+              <Image
+                src={member.photo}
+                alt={member.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Name, Role, Bio on the right */}
+            <div>
+              <h3 className="text-xl font-semibold mb-1">
+                <a
+                  href={member.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  {member.name}
+                </a>
+              </h3>
               <p className="text-blue-600 font-medium mb-2">{member.role}</p>
               <p className="text-gray-600 text-sm">{member.bio}</p>
             </div>
-          ))}
-        </div>
-      </motion.div>
+          </div>
+        ))}
+      </div>
+    </motion.div>
     </div>
   );
 }
