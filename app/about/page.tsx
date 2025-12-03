@@ -103,7 +103,7 @@ export default function AboutPage() {
             className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition flex items-center gap-4"
           >
             {/* Photo on the left */}
-            <div className="w-24 h-24 relative rounded-full overflow-hidden flex-shrink-0">
+            <div className="w-54 h-54 relative rounded-full overflow-hidden flex-shrink-0">
               <Image
                 src={member.photo}
                 alt={member.name}
