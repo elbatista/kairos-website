@@ -2,6 +2,7 @@
 
 import { Server, Cpu, BrainCircuit, DatabaseZap } from "lucide-react";
 import { motion } from "framer-motion";
+import { Database, Bot } from "lucide-react";
 
 export default function TechnologyPage() {
   const features = [
@@ -55,33 +56,115 @@ export default function TechnologyPage() {
         Explore our innovative approach to real-time reasoning, state management, and seamless integration with enterprise systems.
       </motion.p>
 
-      {/* Architecture Overview */}
+      {/* Dynamic Architecture Flow */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className="mb-16"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="mb-20"
       >
-        <h2 className="text-2xl font-semibold text-gray-900 mb-6">Architecture Overview</h2>
-        <div className=" rounded-2xl p-6 shadow-md border border-gray-100 flex flex-col md:flex-row items-center gap-6">
-          <div className="flex-1  md:text-left">
-            <p className="text-gray-600 mb-4">
-              KAIROS’s architecture supports distributed knowledge graph storage, incremental computation, and AI agent integration. It is designed to be cloud-neutral while supporting on-premises deployment.
-            </p>
-            <ul className="list-disc list-inside text-gray-600">
-              <li>Distributed, strongly consistent replication</li>
-              <li>Incremental reasoning and state reuse</li>
-              <li>Middleware layer connecting knowledge to AI agents</li>
-            </ul>
-          </div>
-          <div className="flex-1">
-            {/* Placeholder for architecture diagram */}
-            <div className="w-full h-64  rounded-2xl flex items-center justify-center text-gray-500">
-              <img src="/images/diagram.png" alt="Architecture Diagram" className="max-h-full max-w-full object-contain" />
+        <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
+          How KAIROS Works
+        </h2>
+
+        <div className="relative flex flex-col md:flex-row items-center justify-between gap-16 bg-white p-10 rounded-2xl border border-gray-100 shadow-md">
+
+          {/* Graph Database */}
+          <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ repeat: Infinity, repeatType: "mirror", duration: 2 }}
+            className="flex flex-col items-center text-center"
+          >
+            <div className="w-32 h-32 bg-gray-100 border-2 border-gray-300 rounded-2xl flex flex-col items-center justify-center font-semibold">
+              <Database size={40} className="text-gray-900" />
+              Graph DB
             </div>
+            <p className="text-sm text-gray-500 mt-3 max-w-[160px]">
+              Distributed knowledge graphs / data sources
+            </p>
+          </motion.div>
+
+          {/* ---------- ARROW MOBILE ---------- */}
+          <div className="md:hidden flex justify-center text-blue-500 text-2xl">
+            ↓
           </div>
+
+
+          {/* Flow line 1 */}
+          <div className="hidden md:block  left-1/3 top-1/2 w-32 h-[2px] bg-gradient-to-r from-gray-300 via-blue-400 to-blue-500" />
+
+          {/* Data pulses 1 */}
+          <motion.div
+            animate={{ x: [0, 120, 240], opacity: [0, 1, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+            className="hidden md:block absolute left-1/3 top-[50%-6px] w-3 h-3 bg-blue-500 rounded-full"
+          />
+
+          {/* KAIROS */}
+          <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{
+              scale: 1,
+              // boxShadow: [
+              //   "0 0 0px rgba(59,130,246,0.0)",
+              //   "0 0 25px rgba(59,130,246,0.6)",
+              //   "0 0 0px rgba(59,130,246,0.0)",
+              // ],
+            }}
+            transition={{ repeat: Infinity, repeatType: "mirror", duration: 2.5 }}
+            className="flex flex-col items-center text-center"
+          >
+            <div className="w-46 h-46 bg-blue-600 text-white rounded-2xl flex flex-col items-center justify-center text-xl font-bold">
+            <img src="/icons/kairos-white.svg" alt="KAIROS Logo" className="h-10 w-10" />
+              KAIROS
+            </div>
+            <p className="text-sm text-gray-500 mt-3 max-w-[280px]">
+              High-performance architecture, state management, providing incremental processing & reasoning
+            </p>
+          </motion.div>
+
+          {/* Flow line 2 */}
+          <div className="hidden md:block  right-1/3 top-1/2 w-32 h-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-purple-600" />
+
+    {/* ---------- ARROW MOBILE ---------- */}
+    <div className="md:hidden flex justify-center text-purple-600 text-2xl">
+      ↓
+    </div>
+
+
+          {/* Data pulses 2 */}
+          <motion.div
+            animate={{ x: [0, 120, 240], opacity: [0, 1, 0] }}
+            transition={{ repeat: Infinity, duration: 2.2, ease: "linear", delay: 0.5 }}
+            className="hidden md:block absolute right-[33%] top-[50%-6px] w-3 h-3 bg-purple-500 rounded-full"
+          />
+
+          {/* LLM */}
+          <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ repeat: Infinity, repeatType: "mirror", duration: 2 }}
+            className="flex flex-col items-center text-center"
+          >
+            <div className="text-lg w-32 h-32 bg-gray-900 text-white rounded-2xl flex flex-col items-center justify-center font-semibold">
+              <Bot size={40} className="text-white" />
+              LLM
+            </div>
+            <p className="text-sm text-gray-500 mt-3 max-w-[160px]">
+              Consumes knowledge in real time
+            </p>
+          </motion.div>
         </div>
+
+        {/* Bottom description */}
+        <p className="text-center text-gray-600 mt-10 max-w-2xl mx-auto">
+          Data flows continuously from the <strong>Graph Database</strong> into
+          <strong> KAIROS</strong>, where it’s processed and refined incrementally before
+          being delivered to the <strong>LLM</strong> for reasoning, decisions, and actions.
+        </p>
       </motion.div>
+
 
       {/* Key Features / Innovations */}
       <motion.div
