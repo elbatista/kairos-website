@@ -67,10 +67,10 @@ export default function Home() {
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             <Link
-              href="/contact"
+              href="/technology"
               className="bg-blue-600 text-white px-6 py-3 rounded-2xl text-lg font-medium shadow hover:bg-blue-700 transition"
             >
-              Request a Demo
+              Learn more
             </Link>
           </motion.div>
         </motion.div>
