@@ -96,40 +96,47 @@ export default function AboutPage() {
       transition={{ delay: 0.3, duration: 0.5 }}
     >
       <h2 className="text-2xl font-semibold text-gray-900 mb-6">Our Team</h2>
-      <div className="grid md:grid-cols-2 gap-8">
-      {team.map((member, idx) => (
-          <div
-            key={idx}
-            className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition flex items-center gap-4"
-          >
-            {/* Photo on the left */}
-            <div className="w-54 h-54 relative rounded-full overflow-hidden flex-shrink-0">
-              <Image
-                src={member.photo}
-                alt={member.name}
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            {/* Name, Role, Bio on the right */}
-            <div>
-              <h3 className="text-xl font-semibold mb-1">
-                <a
-                  href={member.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 underline sm:no-underline hover:underline"
-                >
-                  {member.name}
-                </a>
-              </h3>
-              <p className="text-blue-600 font-medium mb-2">{member.role}</p>
-              <p className="text-gray-600 text-sm">{member.bio}</p>
-            </div>
-          </div>
-        ))}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+  {team.map((member, idx) => (
+    <div
+      key={idx}
+      className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition flex flex-col sm:flex-row items-center sm:items-start gap-6"
+    >
+      {/* Photo */}
+      <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden flex-shrink-0">
+        <Image
+          src={member.photo}
+          alt={member.name}
+          fill
+          className="object-cover"
+        />
       </div>
+
+      {/* Content */}
+      <div className="text-center sm:text-left">
+        <h3 className="text-xl font-semibold mb-1">
+          <a
+            href={member.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline sm:no-underline hover:underline"
+          >
+            {member.name}
+          </a>
+        </h3>
+
+        <p className="text-blue-600 font-medium mb-2">
+          {member.role}
+        </p>
+
+        <p className="text-gray-600 text-sm leading-relaxed">
+          {member.bio}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
+
     </motion.div>
     </div>
   );

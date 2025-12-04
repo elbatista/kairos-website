@@ -70,6 +70,7 @@ export default function TechnologyPage() {
         <div className="relative flex flex-col md:flex-row items-center justify-between gap-16 bg-white p-10 rounded-2xl border border-gray-100 shadow-md">
 
           {/* Graph Database */}
+          <div className="flex flex-col items-center text-center">
           <motion.div
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
@@ -80,11 +81,10 @@ export default function TechnologyPage() {
               <Database size={40} className="text-gray-900" />
               Graph DB
             </div>
-            <p className="text-sm text-gray-500 mt-3 max-w-[160px]">
-              Distributed knowledge graphs / data sources
-            </p>
           </motion.div>
-
+          <p className="text-sm text-gray-500 mt-3 max-w-[160px]">
+              Distributed knowledge graphs / data sources
+            </p></div>
           {/* ---------- ARROW MOBILE ---------- */}
           <div className="md:hidden flex justify-center text-blue-500 text-2xl">
             ↓
@@ -102,35 +102,31 @@ export default function TechnologyPage() {
           />
 
           {/* KAIROS */}
-          <motion.div
-            initial={{ scale: 0.9 }}
-            animate={{
-              scale: 1,
-              // boxShadow: [
-              //   "0 0 0px rgba(59,130,246,0.0)",
-              //   "0 0 25px rgba(59,130,246,0.6)",
-              //   "0 0 0px rgba(59,130,246,0.0)",
-              // ],
-            }}
-            transition={{ repeat: Infinity, repeatType: "mirror", duration: 2.5 }}
-            className="flex flex-col items-center text-center"
-          >
-            <div className="w-46 h-46 bg-blue-600 text-white rounded-2xl flex flex-col items-center justify-center text-xl font-bold">
-            <img src="/icons/kairos-white.svg" alt="KAIROS Logo" className="h-10 w-10" />
-              KAIROS
-            </div>
+          <div className="flex flex-col items-center text-center">
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{
+                scale: 1
+              }}
+              transition={{ repeat: Infinity, repeatType: "mirror", duration: 2.5 }}
+              className="flex flex-col items-center text-center"
+            >
+              <div className="w-46 h-46 bg-blue-600 text-white rounded-2xl flex flex-col items-center justify-center text-xl font-bold">
+              <img src="/icons/kairos-white.svg" alt="KAIROS Logo" className="h-10 w-10" />
+                KAIROS
+              </div>
+            </motion.div>
             <p className="text-sm text-gray-500 mt-3 max-w-[280px]">
               High-performance architecture, state management, providing incremental processing & reasoning
             </p>
-          </motion.div>
-
+          </div>
           {/* Flow line 2 */}
           <div className="hidden md:block  right-1/3 top-1/2 w-32 h-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-purple-600" />
 
-    {/* ---------- ARROW MOBILE ---------- */}
-    <div className="md:hidden flex justify-center text-purple-600 text-2xl">
-      ↓
-    </div>
+          {/* ---------- ARROW MOBILE ---------- */}
+          <div className="md:hidden flex justify-center text-purple-600 text-2xl">
+            ↓
+          </div>
 
 
           {/* Data pulses 2 */}
@@ -141,6 +137,7 @@ export default function TechnologyPage() {
           />
 
           {/* LLM */}
+          <div className="flex flex-col items-center text-center">
           <motion.div
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
@@ -151,10 +148,12 @@ export default function TechnologyPage() {
               <Bot size={40} className="text-white" />
               LLM
             </div>
+          </motion.div>
             <p className="text-sm text-gray-500 mt-3 max-w-[160px]">
               Consumes knowledge in real time
             </p>
-          </motion.div>
+          </div>
+
         </div>
 
         {/* Bottom description */}
