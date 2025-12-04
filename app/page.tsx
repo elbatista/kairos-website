@@ -329,7 +329,7 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="text-3xl font-semibold text-gray-900 mb-6 text-center"
         >
-          Manifest Your Interest in Financing KAIROS
+          Become a KAIROS Investor
         </motion.h2>
 
         <motion.form
