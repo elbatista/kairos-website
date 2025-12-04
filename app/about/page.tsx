@@ -26,7 +26,7 @@ export default function AboutPage() {
   const team = [
     {
       name: "Eliã Batista",
-      role: "Co-Founder & Chief Scientist",
+      role: "CEO/CTO",
       bio: "PhD candidate at USI and PUC-RS specializing in distributed systems, parallel state machine replication, and knowledge-driven AI. Passionate about scalable, dependable AI solutions.",
       link: "https://elbatista.github.io/",
       photo: "/team/elia.jpg",
@@ -34,7 +34,7 @@ export default function AboutPage() {
     },
     {
       name: "Fernando Pedone",
-      role: "Co-Founder & Research Supervisor",
+      role: "Chief Scientist",
       bio: "Full Professor at USI with expertise in dependable distributed systems, replication protocols, and fault-tolerant architectures. Advisor to the KAIROS research team.",
       link: "https://www.inf.usi.ch/faculty/pedone/",
       photo: "/team/pedone.jpg",
