@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  --toastify-color-success: var(--color-blue-600)!important;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
