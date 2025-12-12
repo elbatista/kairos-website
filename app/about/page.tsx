@@ -1,8 +1,9 @@
 "use client";
 
-import { Telescope, Swords, Globe } from "lucide-react";
+import { Telescope, Swords, Globe, UserPlus } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutPage() {
   const highlights = [
@@ -30,7 +31,7 @@ export default function AboutPage() {
       bio: "PhD candidate at USI and PUC-RS specializing in distributed systems, parallel state machine replication, and knowledge-driven AI. Passionate about scalable, dependable AI solutions.",
       link: "https://elbatista.github.io/",
       photo: "/team/elia.jpg",
-
+      linktext: "See Profile →",
     },
     {
       name: "Fernando Pedone",
@@ -38,8 +39,16 @@ export default function AboutPage() {
       bio: "Full Professor at USI with expertise in dependable distributed systems, replication protocols, and fault-tolerant architectures. Advisor to the KAIROS research team.",
       link: "https://www.inf.usi.ch/faculty/pedone/",
       photo: "/team/pedone.jpg",
-
+      linktext: "See Profile →",
     },
+    {
+      name: "Full-Stack Developer",
+      role: "Open Position",
+      bio: "Seeking an experienced engineer with expertise in distributed systems, graph databases, and LLM integration to accelerate KAIROS development.",
+      link: "/contact",
+      linktext: "Apply →",
+    }
+    
   ];
 
   return (
@@ -103,13 +112,12 @@ export default function AboutPage() {
       className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition flex flex-col sm:flex-row items-center sm:items-start gap-6"
     >
       {/* Photo */}
-      <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden flex-shrink-0">
-        <Image
-          src={member.photo}
-          alt={member.name}
-          fill
-          className="object-cover"
-        />
+      <div className="flex items-center justify-center relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden flex-shrink-0">
+        {member.photo ? (
+          <Image src={member.photo} alt={member.name} fill className="object-cover" />
+        ) : (
+          <UserPlus className="w-24 h-24 text-gray-900" />
+        )}
       </div>
 
       {/* Content */}
@@ -129,11 +137,23 @@ export default function AboutPage() {
           {member.role}
         </p>
 
-        <p className="text-gray-600 text-sm leading-relaxed">
+        <p className="text-gray-600 text-sm mb-4 leading-relaxed">
           {member.bio}
         </p>
+        {/* Optional link below photo */}
+        {member.link && (
+            <Link
+            href={member.link}
+            target="_blank"
+            className="inline-block text-blue-600 font-medium hover:underline"
+          >
+            {member.linktext}
+          </Link>
+          )}
       </div>
+      
     </div>
+    
   ))}
 </div>
 
