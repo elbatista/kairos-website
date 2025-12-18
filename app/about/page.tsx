@@ -42,9 +42,9 @@ export default function AboutPage() {
       linktext: "See Profile →",
     },
     {
-      name: "Full-Stack Developer",
+      name: "Software Engineer",
       role: "Open Position",
-      bio: "Seeking an experienced engineer with expertise in distributed systems, graph databases, and LLM integration to accelerate KAIROS development.",
+      bio: "Seeking an experienced engineer with expertise in distributed systems, graph databases, or LLM integration to accelerate KAIROS development.",
       link: "/contact",
       linktext: "Apply →",
     }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { DatabaseZap, Server, Bot, Users, Building2, Plug } from "lucide-react";
+import { DatabaseZap, Server, Bot, Users, Building2, Plug, Share2, Eye, Layers } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
@@ -213,6 +213,60 @@ export default function Home() {
           ))}
         </motion.div>
       </section>
+
+
+      {/* Secret Sauce / Advanced Features */}
+<section className="px-6 py-20 bg-gray-50">
+  <motion.h2
+    className="text-3xl font-semibold text-gray-900 text-center mb-12"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+  >
+    KAIROS Secret Sauce
+  </motion.h2>
+
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    variants={{
+      hidden: { opacity: 0 },
+      visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+    }}
+    className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+  >
+    {[
+      {
+        icon: <Layers size={40} className="text-gray-900" />,
+        title: "Neighborhood Prefetching",
+        desc: "Performs neighborhood-based data prefetching to reduce latency and improve real-time performance.",
+      },
+      {
+        icon: <Eye size={40} className="text-gray-900" />,
+        title: "Predictive Access",
+        desc: "LLM-driven prediction of future data access using the history of the conversation with the user.",
+      },
+      {
+        icon: <Share2 size={40} className="text-gray-900" />,
+        title: "Graph Traversal Optimization",
+        desc: "Orders-of-magnitude reduction in repeated graph access, avoiding costly traversals and improving throughput.",
+      },
+    ].map((item, idx) => (
+      <motion.div
+        key={idx}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: idx * 0.1 }}
+        className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition"
+      >
+        <div className="mb-4">{item.icon}</div>
+        <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+        <p className="text-gray-600 text-sm">{item.desc}</p>
+      </motion.div>
+    ))}
+  </motion.div>
+</section>
+
 
       {/* Who it’s for */}
       <section className="px-6 py-20 bg-gray-50">

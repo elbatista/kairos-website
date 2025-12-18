@@ -1,6 +1,6 @@
 "use client";
 
-import { Server, Cpu, BrainCircuit, DatabaseZap } from "lucide-react";
+import { Server, Cpu, BrainCircuit, DatabaseZap, Layers, Eye, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Database, Bot } from "lucide-react";
 
@@ -12,6 +12,26 @@ export default function TechnologyPage() {
       desc: "Processes only updated portions of the knowledge graph, enabling real-time insights and low-latency responses.",
     },
     {
+      icon: <DatabaseZap size={40} />,
+      title: "State Reuse & Caching",
+      desc: "Optimizes performance by reusing intermediate computation states across AI workflows.",
+    },
+    {
+      icon: <Layers size={40} />,
+      title: "Neighborhood Prefetching",
+      desc: "Performs neighborhood-based data prefetching to reduce latency and improve real-time performance.",
+    },
+    {
+      icon: <Eye size={40} />,
+      title: "Predictive Access",
+      desc: "LLM-driven prediction of future data access using the history of the conversation with the user.",
+    },
+    {
+      icon: <Share2 size={40} />,
+      title: "Graph Traversal Optimization",
+      desc: "Orders-of-magnitude reduction in repeated graph access, avoiding costly traversals and improving throughput.",
+    },
+    {
       icon: <Server size={40} />,
       title: "Distributed & Strongly Consistent",
       desc: "Ensures reliability across nodes with replicated state machines and fault-tolerant mechanisms.",
@@ -20,11 +40,6 @@ export default function TechnologyPage() {
       icon: <Cpu size={40} />,
       title: "Middleware Integration",
       desc: "Seamlessly connects structured knowledge to AI agents for real-time reasoning and decision-making.",
-    },
-    {
-      icon: <DatabaseZap size={40} />,
-      title: "State Reuse & Caching",
-      desc: "Optimizes performance by reusing intermediate computation states across AI workflows.",
     },
   ];
 
