@@ -9,7 +9,7 @@ export default function ResearchPage() {
     {
       title: "FlexCast",
       desc: "Techniques for efficient communication in distributed systems.",
-      link: "papers/flexcast.pdf",
+      link: "papers/flexCast.pdf",
     },
     {
       title: "Parallel SMR Execution",
