@@ -28,7 +28,7 @@ export default function AboutPage() {
     {
       name: "Eliã Batista",
       role: "CEO/CTO",
-      bio: "PhD candidate at USI and PUC-RS specializing in distributed systems, parallel state machine replication, and knowledge-driven AI. Passionate about scalable, dependable AI solutions.",
+      bio: "Received a PhD degree at Università della Svizzera italianda (USI), Switzerland, and PUCRS, Brazil (double-degree PhD), specializing in distributed systems, parallel state machine replication, and knowledge-driven AI. Passionate about scalable, dependable AI solutions.",
       link: "https://elbatista.github.io/",
       photo: "/team/elia.jpg",
       linktext: "See Profile →",
