@@ -112,7 +112,7 @@ export default function AboutPage() {
       className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition flex flex-col sm:flex-row items-center sm:items-start gap-6"
     >
       {/* Photo */}
-      <div className="flex items-center justify-center relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden flex-shrink-0">
+      <div className="flex items-center justify-center relative w-20 h-20 sm:w-25 sm:h-25 rounded-full overflow-hidden flex-shrink-0">
         {member.photo ? (
           <Image src={member.photo} alt={member.name} fill className="object-cover" />
         ) : (
